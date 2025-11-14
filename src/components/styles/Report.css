@@ -1,0 +1,351 @@
+/* Estilos para a página de Gerenciamento de Estoque (ProductList.js) */
+
+/* Container principal da seção do dashboard */
+.stock-control-container.modern-dashboard-section {
+  padding: 25px; /* Ajuste geral do padding */
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  border-radius: 8px;
+  /* Removida a margem para que ele ocupe o espaço do .dashboard-main-content */
+}
+
+/* Título principal da página */
+.dashboard-title {
+  color: #ffd700; /* Amarelo */
+  text-align: center;
+  font-size: 2em; /* Reduzido um pouco */
+  margin-bottom: 35px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Wrapper para seções de formulário */
+.form-section {
+  background-color: #282828;
+  padding: 20px 25px; /* Padding ajustado */
+  border-radius: 8px;
+  margin-bottom: 35px; /* Espaço entre seções */
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+
+/* Títulos dentro das seções de formulário ou lista */
+.form-section h3,
+.product-list-section h3,
+.report-section h3 {
+  color: #f0e68c; /* Amarelo claro */
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.4em; /* Padronizado */
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+.modern-form .form-group {
+  margin-bottom: 18px;
+}
+
+.modern-form label {
+  display: block;
+  color: #b0b0b0;
+  margin-bottom: 7px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.modern-form input[type="text"],
+.modern-form input[type="number"],
+.modern-form textarea,
+.modern-form select {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: #333;
+  border: 1px solid #4f4f4f;
+  border-radius: 5px;
+  color: #f0f0f0;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.modern-form input::placeholder,
+.modern-form textarea::placeholder {
+    color: #777;
+}
+
+.modern-form input:focus,
+.modern-form textarea:focus,
+.modern-form select:focus {
+  outline: none;
+  border-color: #ffd700; /* Amarelo ao focar */
+  box-shadow: 0 0 0 2px rgba(255, 217, 0, 0.2);
+}
+
+.modern-form textarea {
+  resize: vertical;
+  min-height: 60px;
+}
+
+.modern-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23c0c0c0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 10px; /* Seta menor */
+  padding-right: 35px;
+}
+
+
+.modern-form .form-row {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 18px;
+}
+
+.modern-form .form-row .form-group {
+  flex: 1;
+  margin-bottom: 0;
+}
+
+.modern-form .submit-button {
+  display: block;
+  width: auto;
+  min-width: 180px; /* Largura mínima */
+  padding: 10px 20px;
+  margin: 20px auto 0 auto; /* Centraliza e adiciona margem no topo */
+  background-color: #ffd700; /* Amarelo */
+  color: #1a1a1a; /* Preto */
+  font-size: 1em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.modern-form .submit-button:hover:not(:disabled) {
+  background-color: #f0c000; /* Amarelo mais escuro */
+}
+.modern-form .submit-button:disabled {
+  background-color: #555;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Seção da Lista de Produtos */
+.product-list-section {
+  margin-top: 30px; /* Espaço acima da lista */
+}
+
+.empty-list-message, .loading-message {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+.product-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.product-list-item {
+  background-color: #2c2c2c;
+  padding: 12px 18px; /* Padding ajustado */
+  border-radius: 6px;
+  margin-bottom: 10px; /* Espaço entre itens ajustado */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  transition: background-color 0.2s ease;
+}
+.product-list-item:hover {
+  background-color: #353535;
+}
+
+.product-item-info {
+  display: flex;
+  flex-direction: column; /* Nome acima dos detalhes */
+  gap: 3px; /* Espaço menor */
+  flex-grow: 1;
+}
+
+.product-name {
+  font-size: 1.1em; /* Tamanho ajustado */
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.product-detail, .product-quantity {
+  font-size: 0.85em; /* Tamanho ajustado */
+  color: #b0b0b0;
+}
+
+.product-item-stock-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espaço ajustado */
+}
+
+.product-item-stock-controls .product-quantity {
+  margin-right: 8px;
+  min-width: 50px; /* Largura mínima ajustada */
+  text-align: right;
+  font-weight: 500;
+}
+
+.product-actions {
+  display: flex;
+  gap: 6px; /* Espaço entre botões de ação ajustado */
+}
+
+.action-button {
+  padding: 5px 8px; /* Botões menores */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 0.85em; /* Fonte menor */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  min-width: 28px;
+}
+.action-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.action-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.increment-button {
+  background-color: #27ae60; /* Verde mais suave */
+  color: white;
+}
+.increment-button:hover:not(:disabled) {
+  background-color: #2ecc71;
+}
+
+.decrement-button {
+  background-color: #c0392b; /* Vermelho */
+  color: white;
+}
+.decrement-button:hover:not(:disabled) {
+  background-color: #e74c3c;
+}
+
+.delete-button {
+  background-color: #7f8c8d; /* Cinza */
+  color: white;
+  padding: 5px 10px; /* Um pouco mais de padding para texto */
+}
+.delete-button:hover:not(:disabled) {
+  background-color: #95a5a6;
+}
+
+/* Seção de Relatório de Movimentações (já estilizada antes, pode manter) */
+.report-section.stock-movement-report {
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid #383838; /* Separador mais sutil */
+}
+
+.report-form-filters .form-row.filter-row { /* Para os filtros de relatório */
+    align-items: flex-end; /* Alinha os labels e inputs */
+}
+.report-form-filters .submit-button {
+    margin-left: 15px; /* Espaço se o botão ficar ao lado dos filtros */
+    align-self: flex-end; /* Alinha com os inputs */
+    padding: 10px 14px; /* Ajusta padding do botão de relatório */
+}
+
+
+.stock-movement-table {
+  /* Estilos da tabela de relatório que você já tem */
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  font-size: 0.9em;
+}
+.stock-movement-table th,
+.stock-movement-table td {
+  border: 1px solid #444;
+  padding: 8px 10px; /* Padding ajustado */
+  text-align: left;
+}
+.stock-movement-table thead th {
+  background-color: #333; /* Cor de fundo do cabeçalho da tabela mais escura */
+  color: #ffd700;
+  font-weight: 600;
+}
+.stock-movement-table tbody tr:nth-child(even) { background-color: #252525; }
+.stock-movement-table tbody tr:hover { background-color: #383838; }
+.stock-movement-table td { color: #c0c0c0; }
+.stock-movement-table .quantity-positive { color: #2ecc71; font-weight: bold; } /* Verde para positivo */
+.stock-movement-table .quantity-negative { color: #e74c3c; font-weight: bold; } /* Vermelho para negativo */
+
+
+.form-error.list-error, .form-error.report-specific-error {
+    margin-top: 15px;
+    text-align: center;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .stock-control-container.modern-dashboard-section {
+    padding: 15px;
+  }
+
+  .modern-form .form-row,
+  .report-form-filters .form-row.filter-row {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .report-form-filters .submit-button {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 15px;
+  }
+
+  .product-list-item {
+    flex-direction: column;
+    align-items: stretch; /* Alinha os itens para ocupar a largura */
+    gap: 10px;
+  }
+  .product-item-info {
+    text-align: center; /* Centraliza info do produto */
+  }
+  .product-item-stock-controls {
+    width: 100%;
+    justify-content: center; /* Centraliza controles de estoque */
+  }
+  .product-item-stock-controls .product-quantity {
+    text-align: center; /* Centraliza texto da quantidade */
+    margin-bottom: 5px; /* Espaço abaixo da quantidade */
+  }
+  .product-actions {
+    justify-content: center; /* Centraliza botões de ação */
+  }
+
+  .dashboard-title,
+  .form-section h3,
+  .product-list-section h3,
+  .report-section h3 {
+    font-size: 1.4em; /* Títulos menores em mobile */
+  }
+
+  .stock-movement-table {
+    font-size: 0.75em; /* Tabela de relatório menor */
+  }
+  .stock-movement-table th,
+  .stock-movement-table td {
+    padding: 6px;
+  }
+}

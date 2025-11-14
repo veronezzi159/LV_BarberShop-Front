@@ -1,0 +1,286 @@
+/* src/components/styles/ClientDashboard.css ou no seu styles.css global */
+
+/* Container principal da seção do dashboard do cliente */
+.client-dashboard-container.modern-dashboard-section {
+  padding: 25px;
+  background-color: #1a1a1a; /* Fundo escuro para a seção inteira */
+  color: #e0e0e0;
+  border-radius: 8px;
+  min-height: calc(100vh - 100px); /* Ajuste conforme altura do header do App.js */
+}
+
+/* Título principal da página (pode reutilizar .dashboard-title se for global) */
+.client-dashboard-container .dashboard-title {
+  color: #ffd700; /* Amarelo */
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.client-dashboard-container .dashboard-header {
+  /* Estilos para o header dentro do client dashboard, se houver */
+  margin-bottom: 20px;
+}
+
+
+/* Wrapper para seções de formulário ou listas */
+.client-dashboard-container .form-section,
+.client-dashboard-container .appointments-section {
+  background-color: #282828;
+  padding: 20px 25px;
+  border-radius: 8px;
+  margin-bottom: 30px; /* Espaço entre seções */
+  box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+}
+
+.client-dashboard-container .form-section h3,
+.client-dashboard-container .appointments-section h3 {
+  color: #f0e68c; /* Amarelo claro */
+  text-align: left; /* Títulos das seções à esquerda */
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+/* Estilos genéricos para formulários (reutilize .modern-form e suas sub-classes) */
+/* Se .modern-form, .form-group, .submit-button já estiverem no seu CSS global,
+   essas regras podem não ser necessárias ou podem ser apenas para ajustes. */
+
+.client-booking-form-wrapper .modern-form .form-group {
+  margin-bottom: 18px;
+}
+
+.client-booking-form-wrapper .modern-form label {
+  display: block;
+  color: #b0b0b0;
+  margin-bottom: 7px;
+  font-size: 0.9em;
+  font-weight: 500;
+}
+
+.client-booking-form-wrapper .modern-form input[type="datetime-local"],
+.client-booking-form-wrapper .modern-form select,
+.client-booking-form-wrapper .modern-form textarea {
+  width: 100%;
+  padding: 10px 14px;
+  background-color: #333;
+  border: 1px solid #4f4f4f;
+  border-radius: 5px;
+  color: #f0f0f0;
+  font-size: 0.95em;
+  box-sizing: border-box;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  color-scheme: dark; /* Ajuda o datepicker a ter tema escuro */
+}
+
+.client-booking-form-wrapper .modern-form input::placeholder,
+.client-booking-form-wrapper .modern-form textarea::placeholder {
+    color: #777;
+}
+
+.client-booking-form-wrapper .modern-form input:focus,
+.client-booking-form-wrapper .modern-form textarea:focus,
+.client-booking-form-wrapper .modern-form select:focus {
+  outline: none;
+  border-color: #ffd700; /* Amarelo ao focar */
+  box-shadow: 0 0 0 2px rgba(255, 217, 0, 0.2);
+}
+
+.client-booking-form-wrapper .modern-form textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+.client-booking-form-wrapper .modern-form select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23c0c0c0%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 10px;
+  padding-right: 35px;
+}
+
+.client-booking-form-wrapper .modern-form .submit-button {
+  display: block;
+  width: 100%; /* Botão ocupa largura total no formulário de agendamento do cliente */
+  padding: 12px 20px;
+  margin-top: 15px;
+  background-color: #ffd700;
+  color: #1a1a1a;
+  font-size: 1.05em;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+.client-booking-form-wrapper .modern-form .submit-button:hover:not(:disabled) {
+  background-color: #f0c000;
+}
+.client-booking-form-wrapper .modern-form .submit-button:disabled {
+  background-color: #555;
+  color: #888;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Lista de Agendamentos do Cliente */
+.client-appointments-list .empty-list-message,
+.client-appointments-list .loading-message {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+.client-appointments-list .appointments-list-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Reutilize .appointment-item, .status-badge, .action-btn do BarberDashboard.css se os estilos forem idênticos */
+/* Ou defina-os aqui se quiser que sejam diferentes para o cliente */
+
+.client-appointments-list .appointment-item {
+  background-color: #2c2c2c;
+  padding: 15px 20px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  /* display: flex; (Se precisar alinhar ações ao lado) */
+  /* justify-content: space-between; */
+  /* align-items: center; */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+  border-left: 4px solid #444; /* Borda padrão */
+}
+
+/* Cores da borda e do badge baseadas no status (pode reutilizar do BarberDashboard) */
+.client-appointments-list .appointment-item.status-pendente { border-left-color: #f1c40f; }
+.client-appointments-list .appointment-item.status-aprovado { border-left-color: #2ecc71; }
+.client-appointments-list .appointment-item.status-concluido { border-left-color: #3498db; }
+.client-appointments-list .appointment-item.status-canceladocliente,
+.client-appointments-list .appointment-item.status-canceladobarbearia,
+.client-appointments-list .appointment-item.status-naocompareceu,
+.client-appointments-list .appointment-item.status-naoaprovado { border-left-color: #e74c3c; }
+
+
+.client-appointments-list .appointment-details p {
+  margin: 0 0 7px 0;
+  line-height: 1.5;
+  font-size: 0.9em;
+}
+.client-appointments-list .appointment-details p:last-child {
+  margin-bottom: 0;
+}
+.client-appointments-list .appointment-details strong {
+  color: #c0c0c0; /* Um pouco mais claro */
+  margin-right: 5px;
+}
+
+.client-appointments-list .status-badge {
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-size: 0.8em; /* Um pouco menor */
+  font-weight: bold;
+  color: white;
+  background-color: #7f8c8d; /* Cinza padrão */
+  display: inline-block; /* Para o padding funcionar corretamente */
+  text-transform: capitalize;
+}
+/* Cores do badge (pode reutilizar do BarberDashboard) */
+.status-pendente .status-badge { background-color: #f1c40f; color: #333; }
+.status-aprovado .status-badge { background-color: #2ecc71; }
+.status-concluido .status-badge { background-color: #3498db; }
+.status-canceladocliente .status-badge,
+.status-canceladobarbearia .status-badge,
+.status-naocompareceu .status-badge,
+.status-naoaprovado .status-badge { background-color: #e74c3c; }
+
+
+.client-appointments-list .appointment-actions {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #3f3f3f;
+  display: flex;
+  gap: 10px;
+}
+
+/* Botão de cancelar para o cliente */
+.client-appointments-list .action-btn.cancel-by-client-btn {
+  background-color: #e74c3c; /* Vermelho */
+  color: white;
+  padding: 7px 12px;
+  font-size: 0.85em;
+  /* Reutilize outros estilos de .action-btn */
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+.client-appointments-list .action-btn.cancel-by-client-btn:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+.client-appointments-list .action-btn.cancel-by-client-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+
+/* Mensagem de erro geral do formulário (pode reutilizar .form-error) */
+.client-dashboard-container .form-error {
+  color: #ff6b6b;
+  background-color: rgba(255, 107, 107, 0.1);
+  padding: 10px;
+  border-radius: 5px;
+  margin: 10px 0 15px 0;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  font-size: 0.9em;
+  text-align: center;
+}
+
+/* Em ClientDashboard.css ou styles.css */
+
+.dashboard-header { /* Certifique-se que o header possa alinhar itens */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Ou o espaçamento que você já tem */
+}
+
+.logout-button-header-client { /* Classe específica para o botão de sair do cliente */
+  padding: 8px 18px;
+  background-color: #c0392b; /* Vermelho, como outros botões de sair */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9em;
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+
+.logout-button-header-client:hover {
+  background-color: #e74c3c; /* Vermelho mais claro no hover */
+}
+
+/* Responsividade básica */
+@media (max-width: 768px) {
+  .client-dashboard-container.modern-dashboard-section {
+    padding: 15px;
+  }
+  .client-dashboard-container .dashboard-title {
+    font-size: 1.6em;
+  }
+  .client-dashboard-container .form-section h3,
+  .client-dashboard-container .appointments-section h3 {
+    font-size: 1.3em;
+  }
+}
