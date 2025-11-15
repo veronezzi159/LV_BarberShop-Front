@@ -1,11 +1,18 @@
 import { createBrowserRouter, Navigate } from "react-router-dom";
 import LoginPage from "./pages/auth/login";
 import { RegisterPage } from "./pages/auth/register";
+import { RequireAuth } from "./components/auth/require-auth";
+import { RequireRole } from "./components/auth/require-role";
+import { ProtectedLayout } from "./layouts/protected-layout";
+import { HomePage } from "./pages/app/home";
+import { DashboardPage } from "./pages/app/dashboard";
+import { UnauthorizedPage } from "./pages/unauthorized-page";
 
 export const route = createBrowserRouter([
+  // Rotas públicas
   {
     path: "/",
-    element: <Navigate to={"/login"} />,
+    element: <Navigate to={"/login"} replace />,
   },
   {
     path: "/login",
@@ -15,4 +22,45 @@ export const route = createBrowserRouter([
     path: "/register",
     element: <RegisterPage />,
   },
+  {
+    path: "/unauthorized",
+    element: <UnauthorizedPage />,
+  },
+
+  {
+    element: <RequireAuth />,
+    children: [
+      {
+        element: <ProtectedLayout />,
+        children: [
+          {
+            element: <RequireRole allowedRoles={["user", "admin"]} />,
+            children: [
+              {
+                path: "/home",
+                element: <HomePage />,
+              },
+            ],
+          },
+          {
+            element: <RequireRole allowedRoles={["admin"]} />,
+            children: [
+              {
+                path: "/dashboard",
+                element: <DashboardPage />,
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+
+  // Rotas contem manager/barbeiro
+
+  //Rotas que nao tem nada
+  // {
+  //   path: "*",
+  //   element: <NotFoundPage />,
+  // },
 ]);

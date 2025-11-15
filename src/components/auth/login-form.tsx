@@ -12,8 +12,10 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "@/schemas/auth/login-schema";
 import { maskPhone } from "@/lib/masks/phone-mask";
+import { createFakeToken, useAuth } from "@/contexts/AuthContext";
 
 export function LoginForm() {
+  const { login } = useAuth();
   const navigate = useNavigate();
 
   const {
@@ -26,7 +28,8 @@ export function LoginForm() {
 
   function onSubmit(data: LoginSchema) {
     console.log("Login =>", data);
-
+    const token = createFakeToken("user");
+    login(token);
     const justDigits = data.phone.replace(/\D/g, "");
     console.log("Login (Digits only) =>", { ...data, phone: justDigits });
   }
