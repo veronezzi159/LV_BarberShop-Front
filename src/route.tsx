@@ -4,9 +4,9 @@ import { RegisterPage } from "./pages/auth/register";
 import { RequireAuth } from "./components/auth/require-auth";
 import { RequireRole } from "./components/auth/require-role";
 import { ProtectedLayout } from "./layouts/protected-layout";
-import { HomePage } from "./pages/app/home";
 import { DashboardPage } from "./pages/app/dashboard";
 import { UnauthorizedPage } from "./pages/unauthorized-page";
+import { ClientPage } from "./pages/client";
 
 export const route = createBrowserRouter([
   // Rotas públicas
@@ -34,16 +34,18 @@ export const route = createBrowserRouter([
         element: <ProtectedLayout />,
         children: [
           {
-            element: <RequireRole allowedRoles={["user", "admin"]} />,
+            element: (
+              <RequireRole allowedRoles={["client", "manager", "barbers"]} />
+            ),
             children: [
               {
-                path: "/home",
-                element: <HomePage />,
+                path: "/cliente",
+                element: <ClientPage />,
               },
             ],
           },
           {
-            element: <RequireRole allowedRoles={["admin"]} />,
+            element: <RequireRole allowedRoles={["manager"]} />,
             children: [
               {
                 path: "/dashboard",

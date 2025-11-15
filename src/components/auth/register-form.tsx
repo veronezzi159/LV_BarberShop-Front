@@ -45,6 +45,13 @@ export function RegisterForm() {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={"flex flex-col gap-6"}>
       <FieldGroup>
+        <div className="flex justify-center lg:hidden">
+          <img
+            src="logo-barb.png"
+            alt="Company Logo"
+            className="h-auto w-33 mb-4"
+          />
+        </div>
         <div className="flex flex-col items-center gap-1 text-center">
           <h1 className="text-2xl font-bold">Crie sua conta</h1>
           <p className="text-muted-foreground text-sm text-balance">

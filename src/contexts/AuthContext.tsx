@@ -30,14 +30,8 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// --- Funções Helper (Simulação) ---
-
-/**
- * Cria um JWT falso para simulação.
- * Em um app real, o backend faria isso.
- */
 const createFakeToken = (
-  role: "user" | "admin",
+  role: string,
   expiresInMs: number = 3600 * 1000 // 1 hora
 ): string => {
   const header = { alg: "HS256", typ: "JWT" };
@@ -49,7 +43,7 @@ const createFakeToken = (
     exp: exp,
     name: "Vinicius",
     phone: "16997008655",
-    roles: role === "admin" ? ["admin", "user"] : ["user"],
+    roles: [role],
   };
   const encode = (data: object) =>
     btoa(JSON.stringify(data))
@@ -60,14 +54,10 @@ const createFakeToken = (
   return `${encode(header)}.${encode(payload)}.fakesignature`;
 };
 
-/**
- * Verifica se o token é válido (existe e não expirou)
- */
 const isValidToken = (token: string): User | null => {
   try {
     const decoded = jwtDecode<DecodedJwt>(token);
 
-    // Verifica se o token expirou
     if (decoded.exp * 1000 < Date.now()) {
       console.warn("Token expirado.");
       return null;
@@ -84,7 +74,6 @@ const isValidToken = (token: string): User | null => {
   }
 };
 
-// --- O Provedor (Provider) ---
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
