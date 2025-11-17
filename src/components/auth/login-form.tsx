@@ -28,9 +28,10 @@ export function LoginForm() {
 
   function onSubmit(data: LoginSchema) {
     console.log("Login =>", data);
-    const token = createFakeToken("user");
+    const token = createFakeToken("client");
     login(token);
     const justDigits = data.phone.replace(/\D/g, "");
+    navigate("/cliente")
     console.log("Login (Digits only) =>", { ...data, phone: justDigits });
   }
 

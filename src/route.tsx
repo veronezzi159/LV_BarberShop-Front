@@ -6,7 +6,7 @@ import { RequireRole } from "./components/auth/require-role";
 import { ProtectedLayout } from "./layouts/protected-layout";
 import { DashboardPage } from "./pages/app/dashboard";
 import { UnauthorizedPage } from "./pages/unauthorized-page";
-import { ClientPage } from "./pages/client";
+import ClientPage from "./pages/client";
 
 export const route = createBrowserRouter([
   // Rotas públicas
@@ -34,9 +34,7 @@ export const route = createBrowserRouter([
         element: <ProtectedLayout />,
         children: [
           {
-            element: (
-              <RequireRole allowedRoles={["client", "manager", "barbers"]} />
-            ),
+            element: <RequireRole allowedRoles={["client"]} />,
             children: [
               {
                 path: "/cliente",
