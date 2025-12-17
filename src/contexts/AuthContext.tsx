@@ -6,12 +6,7 @@ import React, {
   useCallback,
 } from "react";
 import { jwtDecode } from "jwt-decode";
-
-interface User {
-  name: string;
-  phone: string;
-  roles: string[];
-}
+import type { User } from "@/types/interfaces";
 
 interface DecodedJwt {
   name: string;
@@ -67,6 +62,7 @@ const isValidToken = (token: string): User | null => {
       name: decoded.name,
       phone: decoded.phone,
       roles: decoded.roles,
+      active: true,
     };
   } catch (error) {
     console.error("Token inválido:", error);

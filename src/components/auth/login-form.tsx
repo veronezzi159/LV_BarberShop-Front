@@ -13,6 +13,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, type LoginSchema } from "@/schemas/auth/login-schema";
 import { maskPhone } from "@/lib/masks/phone-mask";
 import { createFakeToken, useAuth } from "@/contexts/AuthContext";
+import { decodeToken, getRedirectPath } from "@/utils/auth";
 
 export function LoginForm() {
   const { login } = useAuth();
@@ -28,10 +29,20 @@ export function LoginForm() {
 
   function onSubmit(data: LoginSchema) {
     console.log("Login =>", data);
-    const token = createFakeToken("client");
+    const token = createFakeToken("barber");
+
     login(token);
+
     const justDigits = data.phone.replace(/\D/g, "");
-    navigate("/cliente")
+    const payload = decodeToken(token);
+
+    if (payload && payload.roles) {
+      const destination = getRedirectPath(payload.roles);
+      navigate(destination, { replace: true });
+    } else {
+      navigate("/login");
+    }
+
     console.log("Login (Digits only) =>", { ...data, phone: justDigits });
   }
 
